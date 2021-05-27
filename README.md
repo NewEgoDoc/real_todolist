@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# **Todo List**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+기본적으로 실행되어야 하는 커맨드 두개
 
-## Available Scripts
+새로운 프로젝트 생성
+```
+$ npx create-react-app mashup-todolist
+```
+프로젝트에 필요한 라이브러리 react-icons와 styled-compnents 설치 
 
-In the project directory, you can run:
+```
+$ yarn add react-icons 
+$ yarn add styled-components
+```
 
-### `yarn start`
+## `1. 컴포넌트에 대한 간략한 설명`
+___
+todolist는 front엔드레어서나 framework에서 거의 hello world 급으로 개발자가 빠르게 간단한 프로젝트를 구성해보고 어떻게 작동하는지를 배우는 프로젝트
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### **- TodoTemplate**
+>해당 컴포넌트(.js 파일)는 레이아웃을 보여줍니다. 페이지 중앙에 그림자가 적용된 세로 길쭉한 흰색도화지라 생각하시면 됩니다.
+### **- TodoHead**
+>실제 입력한 todo 항목들을 보여주는 곳으로 해당 날짜와 할일에 대한 간략한 설명을 보여줍니다
+### **- TodoList**
+>TodoItem 항목들을 불러와서 해당 항목에 그려줍니다.
+### **- TodoItem**
+> 할일에 대한 디테일 정보들을 나타냅니다.
+### **- TodoCreate**
+> 할일을 등록시켜주는 컴포넌트입니다 입력값을 토대로 버튼을 눌러주면 할일이 등록되여 item에 추가 즉 list에 추가됩니다.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**`페이지 전체 배경에 색상 입히기 `**
 
-### `yarn test`
+페이지에 회색색상을 적용시켜서 body태그 전체에 styled-components를 사용하여 적용
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+styled-components에서 특정 컴포넌트를 만드는것이 아닌 global 변수 를 추가 할것이기때문에 ` createGlobalStyle ` 을 사용할 것이다.
 
-### `yarn build`
+## **App.js**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```js
+import React from 'react';
+import { createGlobalStyle } from 'styled-components';
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: #e9ecef;
+  }
+`;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+function App() {
+  return (
+    <>
+      <GlobalStyle />
+      <div>안녕하세요</div>
+    </>
+  );
+}
 
-### `yarn eject`
+export default App;
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
